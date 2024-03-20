@@ -64,7 +64,9 @@ def main():
         for branch in branches:
             if branch != DEFAULT_BRANCH:
                 # Check if a Z release is needed
-                changes = repo.git.ls_tree("-r", "--name-only", f"origin/{branch}", "CHANGES/")
+                changes = repo.git.ls_tree(
+                    "-r", "--name-only", f"origin/{branch}", "CHANGES/"
+                )
                 z_release = False
                 for change in changes.split("\n"):
                     # Check each changelog file to make sure everything checks out
@@ -101,7 +103,9 @@ def main():
                             "--",
                             ".bumpversion.cfg",
                         )
-                        next_version = bump_commit.split("to ")[-1] if bump_commit else None
+                        next_version = (
+                            bump_commit.split("to ")[-1] if bump_commit else None
+                        )
 
                     # You could, theoretically, be next_vers==None here - but that's always
                     # been true for this script.
@@ -113,7 +117,9 @@ def main():
                     releases.append(next_version)
             else:
                 # Check if a Y release is needed
-                changes = repo.git.ls_tree("-r", "--name-only", DEFAULT_BRANCH, "CHANGES/")
+                changes = repo.git.ls_tree(
+                    "-r", "--name-only", DEFAULT_BRANCH, "CHANGES/"
+                )
                 for change in changes.split("\n"):
                     _, ext = os.path.splitext(change)
                     if ext in Y_CHANGELOG_EXTS:
