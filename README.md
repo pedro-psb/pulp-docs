@@ -14,7 +14,7 @@ This packages is:
 
 - A `mkdocs-macros-plugin` [pluget](https://mkdocs-macros-plugin.readthedocs.io/en/latest/pluglets/).
 - A repository for common doc website asset.
-- A centralized entrypoint for installing doc-related packages/tooling. (via its own requirements)
+- A centralized entrypoint for installing doc-related packages/tooling (via its own requirements).
 - A CLI for doc-related tasks, like serving and building.
 
 The idea is that each repository should install `pulp-docs` and imediatelly be able run the unified website server.
