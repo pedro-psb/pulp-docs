@@ -1,0 +1,12 @@
+include *.txt
+include *.yml
+include tox.ini
+recursive-include CHANGES *.rst
+recursive-include src *.j2
+recursive-include staging_docs *.css
+recursive-include staging_docs *.gitkeep
+recursive-include staging_docs *.ico
+recursive-include staging_docs *.md
+recursive-include staging_docs *.png
+recursive-include tests *.md
+recursive-include tests *.py
