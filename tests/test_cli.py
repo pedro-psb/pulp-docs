@@ -2,7 +2,6 @@ import os
 import shutil
 from pathlib import Path
 
-import pytest
 import subprocess
 from click.testing import CliRunner
 

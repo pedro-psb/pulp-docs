@@ -180,7 +180,8 @@ def _place_doc_files(src_dir: Path, docs_dir: Path, repo: Repo):
     # Create placeholder, case it was not possible to fetch one
     empty_changelog = changes_dir / "changelog.md"
     empty_changelog.write_text(
-        "# Changelog\n\nThe repository does not provide a changelog or there was a problem fetching it."
+        "# Changelog\n\nThe repository does not provide a changelog or"
+        "there was a problem fetching it."
     )
 
 
@@ -222,7 +223,8 @@ def print_user_repo(repos: Repos, config: Config):
         # TODO: improve this refspec comparision heuristics
         if repo.branch not in repo.branch_in_use:
             warn_msgs.append(
-                f"[pulp-docs] Original {repo.name!r} ref is {repo.branch!r}, but local one is '{repo.branch_in_use}'."
+                f"[pulp-docs] Original {repo.name!r} ref is {repo.branch!r},"
+                f"but local one is '{repo.branch_in_use}'."
             )
 
     if len(local_checkouts) == 0:
