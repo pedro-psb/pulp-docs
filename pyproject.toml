@@ -5,6 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pulp-docs"
 version = "0.0.1"
+readme = "README.md"
+description = "Tool to aggregate Pulp documentation in one place."
 dependencies = [
     "mkdocs-material",
     "mkdocstrings[python]",
