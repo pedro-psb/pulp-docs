@@ -1,5 +1,4 @@
 import os
-import re
 import typing as t
 from pathlib import Path
 
@@ -67,9 +66,15 @@ class AgregationUtils:
         Get all markdown files that matches @template_str basepath and group by repos.
 
         Arguments:
-            template_str: The template with fields to expand. Accepts combination of '{repo}' and '{content}'
-            repo_types: The set of repos to use. Accepts list with combination of "core", "content" and "other"
-            content_types: The set of content-types to use. Accepts combination of "guides", "learn" and "tutorial"
+            template_str:
+                The template with fields to expand.
+                Accepts combination of '{repo}' and '{content}'
+            repo_types:
+                The set of repos to use.
+                Accepts list with combination of "core", "content" and "other"
+            content_types:
+                The set of content-types to use.
+                Accepts combination of "guides", "learn" and "tutorial"
 
         Example:
             ```python

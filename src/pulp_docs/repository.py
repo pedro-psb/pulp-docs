@@ -6,13 +6,11 @@ Their purpose is to facilitate declaring and downloading the source-code.
 from __future__ import annotations
 
 import logging
-import os
 import shutil
 import subprocess
 import tarfile
 import tempfile
 import typing as t
-from collections import ChainMap, defaultdict
 from dataclasses import dataclass, field
 from io import BytesIO
 from pathlib import Path
@@ -67,10 +65,6 @@ class Repo:
 
     def __post_init__(self):
         self.branch_in_use = self.branch_in_use or self.branch
-
-    @property
-    def rest_api_link(self):
-        return RESTAPI_TEMPLATE.format(self.name)
 
     def download(self, dest_dir: Path, clear_cache: bool = False) -> str:
         """
@@ -161,8 +155,6 @@ def download_from_gh_main(dest_dir: Path, owner: str, name: str, branch: str):
 def download_from_gh_latest(dest_dir: Path, owner: str, name: str):
     """
     Download repository source-code from latest GitHub Release (w/ GitHub API).
-
-    See: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
 
     Returns the download url.
     """
