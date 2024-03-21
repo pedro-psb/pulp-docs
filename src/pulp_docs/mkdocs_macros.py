@@ -228,9 +228,7 @@ def print_user_repo(repos: Repos, config: Config):
             )
 
     if len(local_checkouts) == 0:
-        warn_msgs.append(
-            "[pulp-docs] No local checkouts found. Serving in read-only mode."
-        )
+        warn_msgs.append("[pulp-docs] No local checkouts found. Serving in read-only mode.")
 
     if config.verbose:
         report = {
@@ -263,9 +261,7 @@ def define_env(env):
         repos = Repos.from_yaml(config.repolist)
         repos.update_local_checkouts()
     else:
-        repos = (
-            Repos.test_fixtures()
-        )  # try to use fixtures if there is no BASE_REPOLIST
+        repos = Repos.test_fixtures()  # try to use fixtures if there is no BASE_REPOLIST
     log.info(f"Repository configurations loaded: {[repo.name for repo in repos.all]}")
 
     # Download and organize repository files
@@ -279,18 +275,14 @@ def define_env(env):
     for repo_or_package in repos.all:
         # Handle subpackages or repos
         if isinstance(repo_or_package, SubPackage):
-            repo_or_package_path = (
-                repo_or_package.subpackage_of + "/" + repo_or_package.name
-            )
+            repo_or_package_path = repo_or_package.subpackage_of + "/" + repo_or_package.name
         else:
             repo_or_package_path = repo_or_package.name
 
         # Add to mkdocstring pythonpath
         code_sources.append(str(source_dir / repo_or_package_path))
 
-    env.conf["plugins"]["mkdocstrings"].config["handlers"]["python"][
-        "paths"
-    ] = code_sources
+    env.conf["plugins"]["mkdocstrings"].config["handlers"]["python"]["paths"] = code_sources
 
     # Configure navigation
     log.info("[pulp-docs] Configuring navigation")
@@ -307,9 +299,7 @@ def define_env(env):
     def get_repos(repo_type="content"):
         "Return repo names by type"
         _repo_type = [repo_type] if repo_type else None
-        repos_list = sorted(
-            repos.get_repos(repo_types=_repo_type), key=lambda x: x.title
-        )
+        repos_list = sorted(repos.get_repos(repo_types=_repo_type), key=lambda x: x.title)
         repos_data = [
             {
                 "title": repo.title,

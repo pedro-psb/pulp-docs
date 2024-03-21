@@ -69,11 +69,7 @@ def grouped_by_persona(tmpdir: Path, repos: Repos):
                 f.section(Names.GUIDES, f.get_children, "pulpcore/docs/user/guides"),
             ]
         },
-        {
-            "Plugins": f.repo_grouping(
-                "{repo}/docs/user/{content}", repo_types=["content"]
-            )
-        },
+        {"Plugins": f.repo_grouping("{repo}/docs/user/{content}", repo_types=["content"])},
         {"Extras": f.repo_grouping("{repo}/docs/user/{content}", repo_types=["other"])},
     ]
     admin_section = [
@@ -117,35 +113,21 @@ def grouped_by_persona(tmpdir: Path, repos: Repos):
                 f.section(Names.GUIDES, f.get_children, "pulpcore/docs/dev/guides"),
             ]
         },
-        {
-            "Plugins": f.repo_grouping(
-                "{repo}/docs/dev/{content}", repo_types=["content"]
-            )
-        },
+        {"Plugins": f.repo_grouping("{repo}/docs/dev/{content}", repo_types=["content"])},
         {"Extras": f.repo_grouping("{repo}/docs/dev/{content}", repo_types=["other"])},
     ]
     help_section = [
         *f.get_children("pulp-docs/docs/sections/help/community"),
-        {
-            "Documentation Usage": f.get_children(
-                "pulp-docs/docs/sections/help/using-this-doc"
-            )
-        },
+        {"Documentation Usage": f.get_children("pulp-docs/docs/sections/help/using-this-doc")},
         {
             "Changelogs": [
                 {"Pulpcore": "pulpcore/changes/changelog.md"},
                 {
                     "Plugins": sorted(
-                        f.repo_grouping(
-                            "{repo}/changes", repo_types=["content"]
-                        ).items()
+                        f.repo_grouping("{repo}/changes", repo_types=["content"]).items()
                     )
                 },
-                {
-                    "Extra": sorted(
-                        f.repo_grouping("{repo}/changes", repo_types=["other"]).items()
-                    )
-                },
+                {"Extra": sorted(f.repo_grouping("{repo}/changes", repo_types=["other"]).items())},
             ]
         },
         {"Governance": f.get_children("pulp-docs/docs/sections/help/governance")},
