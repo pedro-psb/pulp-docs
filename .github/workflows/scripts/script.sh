@@ -45,6 +45,7 @@ fi
 if [[ "$TEST" = "new_docs" ]]; then
   pip install --user git+https://github.com/pulp/pulp-docs
   pulp-docs build
+  exit
 fi
 
 REPORTED_STATUS="$(pulp status)"
