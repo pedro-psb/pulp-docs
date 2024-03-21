@@ -116,9 +116,7 @@ class AgregationUtils:
                 lookup_path = self._parse_template_str(template_str, repo.name)
                 _repo_content = self.get_children(lookup_path)
                 if _repo_content:
-                    _nav[repo.title] = (
-                        _repo_content if len(_repo_content) > 1 else _repo_content[0]
-                    )
+                    _nav[repo.title] = _repo_content if len(_repo_content) > 1 else _repo_content[0]
         # Expand content-types
         else:
             for repo in selected_repos:
@@ -133,9 +131,7 @@ class AgregationUtils:
 
                 for content_type in selected_content:
                     # Get repo files from content-type and persona
-                    lookup_path = self._parse_template_str(
-                        template_str, repo.name, content_type
-                    )
+                    lookup_path = self._parse_template_str(template_str, repo.name, content_type)
                     _repo_content = self.get_children(lookup_path)
 
                     # Prevent rendering content-type section if there are no files

@@ -143,9 +143,7 @@ def download_from_gh_main(dest_dir: Path, owner: str, name: str, branch: str):
     try:
         subprocess.run(cmd, check=True)
     except subprocess.CalledProcessError as e:
-        log.error(
-            f"An error ocurred while trying to download '{name}' source-code:\n{e}"
-        )
+        log.error(f"An error ocurred while trying to download '{name}' source-code:\n{e}")
         raise
 
     log.info("Done.")
@@ -158,8 +156,8 @@ def download_from_gh_latest(dest_dir: Path, owner: str, name: str):
 
     Returns the download url.
     """
-    latest_release_link_url = (
-        "https://api.github.com/repos/{}/{}/releases/latest".format(owner, name)
+    latest_release_link_url = "https://api.github.com/repos/{}/{}/releases/latest".format(
+        owner, name
     )
 
     print("Fetching latest release with:", latest_release_link_url)
@@ -318,8 +316,6 @@ class Repos:
                 type="content",
             ),
             Repo("Maven", "new_repo3", local_basepath=FIXTURE_WORKDIR, type="content"),
-            Repo(
-                "Docs Tool", "pulp-docs", local_basepath=FIXTURE_WORKDIR, type="other"
-            ),
+            Repo("Docs Tool", "pulp-docs", local_basepath=FIXTURE_WORKDIR, type="other"),
         ]
         return Repos(core_repo=DEFAULT_CORE, content_repos=DEFAULT_CONTENT_REPOS)

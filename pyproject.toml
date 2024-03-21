@@ -76,6 +76,7 @@ exclude = '''
     \.eggs
   | \.git
   | \.venv
+  | venv
   | _build
   | build
   | dist
