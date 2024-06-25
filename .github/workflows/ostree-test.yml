@@ -1,0 +1,33 @@
+name: "Ostree installation test"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-data:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v4"
+        with:
+          ref: docs-data
+
+      - name: "Set up Python"
+        uses: "actions/setup-python@v5"
+        with:
+          python-version: "3.11"
+
+      - name: "Install System dependencies"
+        run: |
+          sudo apt install -y libgirepository1.0-dev gcc libcairo2-dev pkg-config python3-dev gir1.2-gtk-4.0
+
+      - name: "Install Python dependencies"
+        run: |
+          pip install git+https://github.com/pedro-psb/pulp-docs@gen-and-store-api-json-in-pulp-docs
+          # python -m pulp_docs.openapi /tmp -l pulp_ostree
+          # python -m venv /tmp/myvenv
+          # /tmp/myvenv/bin/pip install pulpcore git+https://github.com/pulp/pulp_ostree
+
+      # experiments with the deps to get it working
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
+
